@@ -1,22 +1,24 @@
 import React from 'react';
+import PopupWithForm from "./PopupWithForm";
+import PopupWithImage from "./PopupWithImage";
 
 function Main() {
     function handleEditAvatarClick() {
         document
-          .querySelector('.modal_type_change-avatar')
-          .classList.add('modal_opened');
-      }
-  
-      function handleEditProfileClick() {
+            .querySelector('.modal_type_change-avatar')
+            .classList.add('modal_opened');
+    }
+
+    function handleEditProfileClick() {
         document
-          .querySelector('.modal_type_edit-profile')
-          .classList.add('modal_opened');
-      }
-  
-      function handleAddPlaceClick() {
+            .querySelector('.modal_type_edit-profile')
+            .classList.add('modal_opened');
+    }
+
+    function handleAddPlaceClick() {
         document.querySelector('.modal_type_add-card')
-        .classList.add('modal_opened');
-      }
+            .classList.add('modal_opened');
+    }
     return (
         <main className="content">
             <section className="profile">
@@ -39,79 +41,55 @@ function Main() {
             <section className="cards">
                 <ul className="cards__list">{/* template cards */}</ul>
             </section>
+
             {/* edit profile */}
-            <div id="modal-edit" className="modal modal_type_edit-profile">
-                <div className="modal__container">
-                    <h3 className="modal__header">Edit profile</h3>
-                    <form action="#" method="post" name="editForm" className="form" noValidate>
-                        <input id="nameInput" type="text" name="name" placeholder="Name"
-                            className="form__input form__input_type_name" value="Jacques Cousteau" minLength="2" maxLength="40"
-                            required />
-                        <span id="nameInput-error" className="form__input-error"></span>
-                        <input id="titleInput" type="text" name="job" placeholder="About me"
-                            className="form__input form__input_type_title" value="Explorer" minLength="2" maxLength="200" required />
-                        <span id="titleInput-error" className="form__input-error"></span>
-                        <button className="form__submit-button" type="submit" data-text="Save">Save</button>
-                    </form>
-                    <button className="modal__reset-button" type="reset" aria-label="Close button"></button>
-                </div>
-            </div>
+            <PopupWithForm name="edit-profile" title="Edit profile">
+                <input id="nameInput" type="text" name="name" placeholder="Name"
+                    className="form__input form__input_type_name" value="Jacques Cousteau" minLength="2" maxLength="40"
+                    required />
+                <span id="nameInput-error" className="form__input-error"></span>
+                <input id="titleInput" type="text" name="job" placeholder="About me"
+                    className="form__input form__input_type_title" value="Explorer" minLength="2" maxLength="200" required />
+                <span id="titleInput-error" className="form__input-error"></span>
+                <button className="form__submit-button" type="submit" data-text="Save">Save</button>
+            </PopupWithForm>
+
             {/* add new cards */}
-            <div id="modal-add" className="modal modal_type_add-card">
-                <div className="modal__container">
-                    <h3 className="modal__header">New place</h3>
-                    <form action="#" method="post" name="addForm" className="form" noValidate>
-                        <input id="name-input" type="text" name="title" placeholder="Title"
-                            className="form__input form__input_type_card-title" minLength="1" maxLength="30" required />
-                        <span id="name-input-error" className="form__input-error"></span>
-                        <input id="link-input" type="url" name="link" placeholder="Image link"
-                            className="form__input form__input_type_url" required />
-                        <span id="link-input-error" className="form__input-error"></span>
-                        <button className="form__submit-button form__submit-button_inactive" type="submit"
-                            data-text="Create">Create</button>
-                    </form>
-                    <button className="modal__reset-button" type="reset" aria-label="Close button"></button>
-                </div>
-            </div>
+            <PopupWithForm name="add-card" title="New place">
+                <input id="name-input" type="text" name="title" placeholder="Title"
+                    className="form__input form__input_type_card-title" minLength="1" maxLength="30" required />
+                <span id="name-input-error" className="form__input-error"></span>
+                <input id="link-input" type="url" name="link" placeholder="Image link"
+                    className="form__input form__input_type_url" required />
+                <span id="link-input-error" className="form__input-error"></span>
+                <button className="form__submit-button form__submit-button_inactive" type="submit"
+                    data-text="Create">Create</button>
+            </PopupWithForm>
+
             {/* modal open image */}
-            <div id="modal-image" className="modal modal_type_image">
-                <figure className="modal__container modal__open-image">
-                    <button className="modal__reset-button" type="reset" aria-label="Close button"></button>
-                    <img className="modal__image" src="#" alt="card" />
-                    <figcaption className="modal__image-caption"></figcaption>
-                </figure>
-            </div>
+            <PopupWithImage />
+
             {/* modal delete card */}
-            <div className="modal modal_type_delete-card">
-                <div className="modal__container modal__delete-card">
-                    <form className="form" action="#" name="delete-card" noValidate>
-                        <h2 className="form__title">Are you sure?</h2>
-                        <button className="form__submit-button" type="submit" data-text="Yes">Yes</button>
-                    </form>
-                    <button className="modal__reset-button" type="reset" aria-label="Close button"></button>
-                </div>
-            </div>
+            <PopupWithForm name="delete-card" title="Are you sure?">
+                <button className="form__submit-button" type="submit" data-text="Yes">Yes</button>
+            </PopupWithForm>
+
             {/* modal change avatar */}
-            <div id="modal-avatar" className="modal modal_type_change-avatar">
-                <div className="modal__container modal__change-avatar">
-                    <h3 className="modal__header">Change profile picture</h3>
-                    <form action="#" method="PATCH" name="editAvatarForm" className="form" noValidate>
-                        <input id="avatar-input" type="url" name="imageLink" placeholder="Profile image link"
-                            className="form__input form__input_type_url" value="" required />
-                        <span id="avatar-input-error" className="form__input-error"></span>
-                        <button className="form__submit-button form__submit-button_inactive" type="submit" value="Save"
-                            data-text="Save">Save</button>
-                    </form>
-                    <button className="modal__reset-button" type="reset" aria-label="Close button"></button>
-                </div>
-            </div>
+            <PopupWithForm name="change-avatar" title="Change profile picture">
+                <input id="avatar-input" type="url" name="imageLink" placeholder="Profile image link"
+                    className="form__input form__input_type_url" value="" required />
+                <span id="avatar-input-error" className="form__input-error"></span>
+                <button className="form__submit-button form__submit-button_inactive" type="submit" value="Save"
+                    data-text="Save">Save</button>
+            </PopupWithForm>
+
             {/* template cards */}
             <template className="card-template">
                 <li className="card">
                     <button className="card__delete-button" aria-label="delete-card" type="button"></button>
                     <div className="card__image"></div>
                     <div className="card__text">
-                        <h2 className="card__title"></h2>
+                        <h2 className="card__title">Card title</h2>
                         <div className="card__like-container">
                             <button className="card__like-button" aria-label="like-card" type="button"></button>
                             <p className="card__like-counter"></p>

@@ -5,11 +5,11 @@ import Footer from './Footer.js';
 
 function App() {
   return (
-    <body className="page">
+    <div className="page">
       <Header />
       <Main />
       <Footer />
-    </body>
+    </div>
   );
 }
 
