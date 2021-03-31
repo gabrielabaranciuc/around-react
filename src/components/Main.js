@@ -1,6 +1,22 @@
 import React from 'react';
 
 function Main() {
+    function handleEditAvatarClick() {
+        document
+          .querySelector('.modal_type_change-avatar')
+          .classList.add('modal_opened');
+      }
+  
+      function handleEditProfileClick() {
+        document
+          .querySelector('.modal_type_edit-profile')
+          .classList.add('modal_opened');
+      }
+  
+      function handleAddPlaceClick() {
+        document.querySelector('.modal_type_add-card')
+        .classList.add('modal_opened');
+      }
     return (
         <main className="content">
             <section className="profile">
@@ -8,17 +24,17 @@ function Main() {
                     <div className="profile__image-container">
                         <img className="profile__avatar" src="#" alt="profile avatar" />
                         <button className="profile__button profile__button_edit-avatar profile__button_hoverable"
-                            aria-label="edit-avatar" type="button"></button>
+                            aria-label="edit-avatar" type="button" onClick={handleEditAvatarClick}></button>
                     </div>
                     <div className="profile__info">
                         <div className="profile__text">
                             <h1 className="profile__name">Gabriela</h1>
-                            <p className="profile__title">Student</p>
+                            <p className="profile__title">Web Developer</p>
                         </div>
-                        <button className="button profile__edit-button" aria-label="edit" type="button"></button>
+                        <button className="button profile__edit-button" aria-label="edit" type="button" onClick={handleEditProfileClick}></button>
                     </div>
                 </div>
-                <button className="button profile__add-button" aria-label="add" type="button"></button>
+                <button className="button profile__add-button" aria-label="add" type="button" onClick={handleAddPlaceClick}></button>
             </section>
             <section className="cards">
                 <ul className="cards__list">{/* template cards */}</ul>
@@ -95,7 +111,7 @@ function Main() {
                     <button className="card__delete-button" aria-label="delete-card" type="button"></button>
                     <div className="card__image"></div>
                     <div className="card__text">
-                        <h2 className="card__title">Card Title</h2>
+                        <h2 className="card__title"></h2>
                         <div className="card__like-container">
                             <button className="card__like-button" aria-label="like-card" type="button"></button>
                             <p className="card__like-counter"></p>
