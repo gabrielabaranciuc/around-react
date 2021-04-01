@@ -1,24 +1,8 @@
 import React from 'react';
-import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./PopupWithImage";
+import PopupWithForm from './PopupWithForm.js';
+import PopupWithImage from './PopupWithImage.js';
 
-function Main() {
-    function handleEditAvatarClick() {
-        document
-            .querySelector('.modal_type_change-avatar')
-            .classList.add('modal_opened');
-    }
-
-    function handleEditProfileClick() {
-        document
-            .querySelector('.modal_type_edit-profile')
-            .classList.add('modal_opened');
-    }
-
-    function handleAddPlaceClick() {
-        document.querySelector('.modal_type_add-card')
-            .classList.add('modal_opened');
-    }
+function Main(props) {
     return (
         <main className="content">
             <section className="profile">
@@ -26,24 +10,24 @@ function Main() {
                     <div className="profile__image-container">
                         <img className="profile__avatar" src="#" alt="profile avatar" />
                         <button className="profile__button profile__button_edit-avatar profile__button_hoverable"
-                            aria-label="edit-avatar" type="button" onClick={handleEditAvatarClick}></button>
+                            aria-label="edit-avatar" type="button" onClick={props.onEditAvatar}></button>
                     </div>
                     <div className="profile__info">
                         <div className="profile__text">
                             <h1 className="profile__name">Gabriela</h1>
                             <p className="profile__title">Web Developer</p>
                         </div>
-                        <button className="button profile__edit-button" aria-label="edit" type="button" onClick={handleEditProfileClick}></button>
+                        <button className="button profile__edit-button" aria-label="edit" type="button" onClick={props.onEditProfile}></button>
                     </div>
                 </div>
-                <button className="button profile__add-button" aria-label="add" type="button" onClick={handleAddPlaceClick}></button>
+                <button className="button profile__add-button" aria-label="add" type="button" onClick={props.onAddPlace}></button>
             </section>
             <section className="cards">
                 <ul className="cards__list">{/* template cards */}</ul>
             </section>
 
             {/* edit profile */}
-            <PopupWithForm name="edit-profile" title="Edit profile">
+            <PopupWithForm name="edit-profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
                 <input id="nameInput" type="text" name="name" placeholder="Name"
                     className="form__input form__input_type_name" value="Jacques Cousteau" minLength="2" maxLength="40"
                     required />
@@ -55,7 +39,7 @@ function Main() {
             </PopupWithForm>
 
             {/* add new cards */}
-            <PopupWithForm name="add-card" title="New place">
+            <PopupWithForm name="add-card" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
                 <input id="name-input" type="text" name="title" placeholder="Title"
                     className="form__input form__input_type_card-title" minLength="1" maxLength="30" required />
                 <span id="name-input-error" className="form__input-error"></span>
@@ -70,12 +54,12 @@ function Main() {
             <PopupWithImage />
 
             {/* modal delete card */}
-            <PopupWithForm name="delete-card" title="Are you sure?">
+            <PopupWithForm name="delete-card" title="Are you sure?" isOpen={false} onClose={props.onClose}>
                 <button className="form__submit-button" type="submit" data-text="Yes">Yes</button>
             </PopupWithForm>
 
             {/* modal change avatar */}
-            <PopupWithForm name="change-avatar" title="Change profile picture">
+            <PopupWithForm name="change-avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClose}>
                 <input id="avatar-input" type="url" name="imageLink" placeholder="Profile image link"
                     className="form__input form__input_type_url" value="" required />
                 <span id="avatar-input-error" className="form__input-error"></span>
