@@ -1,21 +1,39 @@
-import React from 'react';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
+import React from "react";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import api from "../utils/Api.js";
 
 function Main(props) {
+    const [userName, setUserName] = React.useState('');
+    const [userDescription, setUserDescription] = React.useState('');
+    const [userAvatar, setUserAvatar] = React.useState('');
+
+    React.useEffect(() => {
+        api
+          .getUserInfo()
+          .then((res) => {
+            setUserName(res.name);
+            setUserDescription(res.about);
+            setUserAvatar(res.avatar);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+
     return (
         <main className="content">
             <section className="profile">
                 <div className="profile__container">
                     <div className="profile__image-container">
-                        <img className="profile__avatar" src="#" alt="profile avatar" />
+                        <img className="profile__avatar" src={userAvatar} style={{ backgroundImage: `url(${userAvatar})` }} alt="profile avatar" />
                         <button className="profile__button profile__button_edit-avatar profile__button_hoverable"
                             aria-label="edit-avatar" type="button" onClick={props.onEditAvatar}></button>
                     </div>
                     <div className="profile__info">
                         <div className="profile__text">
-                            <h1 className="profile__name">Gabriela</h1>
-                            <p className="profile__title">Web Developer</p>
+                            <h1 className="profile__name">{userName}</h1>
+                            <p className="profile__title">{userDescription}</p>
                         </div>
                         <button className="button profile__edit-button" aria-label="edit" type="button" onClick={props.onEditProfile}></button>
                     </div>
@@ -35,19 +53,19 @@ function Main(props) {
                 <input id="titleInput" type="text" name="job" placeholder="About me"
                     className="form__input form__input_type_title" value="Explorer" minLength="2" maxLength="200" required />
                 <span id="titleInput-error" className="form__input-error"></span>
-                <button className="form__submit-button" type="submit" data-text="Save">Save</button>
+                <button className="form__submit-button" type="submit" data-text="Save" value="Save">Save</button>
             </PopupWithForm>
 
             {/* add new cards */}
             <PopupWithForm name="add-card" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
                 <input id="name-input" type="text" name="title" placeholder="Title"
-                    className="form__input form__input_type_card-title" minLength="1" maxLength="30" required />
+                    className="form__input form__input_type_card-title" minLength="1" maxLength="30" value="" required />
                 <span id="name-input-error" className="form__input-error"></span>
                 <input id="link-input" type="url" name="link" placeholder="Image link"
-                    className="form__input form__input_type_url" required />
+                    className="form__input form__input_type_url" value="" required />
                 <span id="link-input-error" className="form__input-error"></span>
                 <button className="form__submit-button form__submit-button_inactive" type="submit"
-                    data-text="Create">Create</button>
+                    data-text="Create" value="Create">Create</button>
             </PopupWithForm>
 
             {/* modal open image */}
@@ -55,7 +73,7 @@ function Main(props) {
 
             {/* modal delete card */}
             <PopupWithForm name="delete-card" title="Are you sure?" isOpen={false} onClose={props.onClose}>
-                <button className="form__submit-button" type="submit" data-text="Yes">Yes</button>
+                <button className="form__submit-button" type="submit" data-text="Yes" value="Yes">Yes</button>
             </PopupWithForm>
 
             {/* modal change avatar */}
