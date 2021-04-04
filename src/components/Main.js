@@ -2,7 +2,7 @@ import React from "react";
 import api from "../utils/Api.js";
 import Card from "./Card";
 import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
+import ImagePopup from "./ImagePopup.js";
 
 function Main(props) {
     const [userName, setUserName] = React.useState('');
@@ -81,7 +81,7 @@ function Main(props) {
             </PopupWithForm>
 
             {/* modal open image */}
-            <PopupWithImage
+            <ImagePopup
                 onClose={props.onClose}
                 card={props.selectedCard}
             />

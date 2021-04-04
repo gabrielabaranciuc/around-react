@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PopupWithImage(props) {
+function ImagePopup(props) {
     return (
         <>
             <div className={"modal modal_type_image" + (props.card ? " modal_opened" : "")}>
@@ -14,4 +14,4 @@ function PopupWithImage(props) {
     );
 }
 
-export default PopupWithImage;
+export default ImagePopup;
