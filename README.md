@@ -2,6 +2,40 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Sprint 10: Around The U.S.
+*Part of Practicum by Yandex Web Development course.
+
+### Overview
+* Intro
+* Technologies and techniques used
+* Figma
+* Images
+
+**Intro**
+
+This project is in progress with porting to React.
+
+## Technologies and techniques used
+Project is created with:
+* HTML5
+* CSS
+* BEM
+* JavaScript
+* React
+
+**Figma**
+
+* [Link to the project in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+
+* [Link to the project in Figma](https://www.figma.com/file/m79HxYeZpOXRw0Tz2eZGOV/Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)
+
+* [Link to the project in Figma](https://www.figma.com/file/05izwsCh3F3UsBmHfHhUFQ/Sprint-6%3A-Around-The-U.S.?node-id=0%3A1)
+
+
+**Images**
+
+Images are exported images directly from Figma and optimized [here](https://tinypng.com/), for a faster loading of the project. 
+
 ## Available Scripts
 
 In the project directory, you can run:
