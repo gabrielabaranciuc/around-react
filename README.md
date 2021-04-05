@@ -10,6 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Technologies and techniques used
 * Figma
 * Images
+* Link project
 
 **Intro**
 
@@ -35,6 +36,12 @@ Project is created with:
 **Images**
 
 Images are exported images directly from Figma and optimized [here](https://tinypng.com/), for a faster loading of the project. 
+
+**Link project**
+
+[Link project](https://gabrielabaranciuc.github.io/around-react/)
+
+
 
 ## Available Scripts
 

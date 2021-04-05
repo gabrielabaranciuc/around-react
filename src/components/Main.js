@@ -22,7 +22,7 @@ function Main(props) {
             .catch((err) => {
                 console.log(err);
             });
-    }, [userName, userDescription, userAvatar]);
+    }, []);
 
     React.useEffect(() => {
         api
@@ -57,7 +57,7 @@ function Main(props) {
             </section>
 
             {/* edit profile */}
-            <PopupWithForm name="edit-profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
+            <PopupWithForm name="edit-profile" title="Edit profile" buttonText="Save" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
                 <input id="nameInput" type="text" name="name" placeholder="Name"
                     className="form__input form__input_type_name" minLength="2" maxLength="40"
                     required />
@@ -65,19 +65,16 @@ function Main(props) {
                 <input id="titleInput" type="text" name="job" placeholder="About me"
                     className="form__input form__input_type_title" minLength="2" maxLength="200" required />
                 <span id="titleInput-error" className="form__input-error"></span>
-                <button className="form__submit-button" type="submit" data-text="Save" value="Save">Save</button>
             </PopupWithForm>
 
             {/* add new cards */}
-            <PopupWithForm name="add-card" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
+            <PopupWithForm name="add-card" title="New place" buttonText="Create" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
                 <input id="name-input" type="text" name="title" placeholder="Title"
                     className="form__input form__input_type_card-title" minLength="1" maxLength="30" required />
                 <span id="name-input-error" className="form__input-error"></span>
                 <input id="link-input" type="url" name="link" placeholder="Image link"
                     className="form__input form__input_type_url" required />
                 <span id="link-input-error" className="form__input-error"></span>
-                <button className="form__submit-button form__submit-button_inactive" type="submit"
-                    data-text="Create" value="Create">Create</button>
             </PopupWithForm>
 
             {/* modal open image */}
@@ -87,19 +84,15 @@ function Main(props) {
             />
 
             {/* modal delete card */}
-            <PopupWithForm name="delete-card" title="Are you sure?" isOpen={false} onClose={props.onClose}>
-                <button className="form__submit-button" type="submit" data-text="Yes" >Yes</button>
-            </PopupWithForm>
+            <PopupWithForm name="delete-card" title="Are you sure?" buttonText="Yes" isOpen={false} onClose={props.onClose} />
 
             {/* modal change avatar */}
-            <PopupWithForm name="change-avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClose}>
+            <PopupWithForm name="change-avatar" title="Change profile picture" buttonText="Save" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClose}>
                 <input id="avatar-input" type="url" name="imageLink" placeholder="Profile image link"
                     className="form__input form__input_type_url" required />
                 <span id="avatar-input-error" className="form__input-error"></span>
-                <button className="form__submit-button form__submit-button_inactive" type="submit" value="Save"
-                    data-text="Save">Save</button>
             </PopupWithForm>
-            
+
             {/* Template initial cards */}
             <section className="cards">
                 <ul className="cards__list">

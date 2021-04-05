@@ -15,9 +15,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     getUserInfo() {
@@ -27,9 +24,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     changeAvatar(formData) {
@@ -43,9 +37,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     changeUserInfo(formData) {
@@ -60,9 +51,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     addCard(formData) {
@@ -77,9 +65,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     deleteCard(cardId) {
@@ -90,9 +75,6 @@ class Api {
         .then((res) =>
           (res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
         )
-        .catch((err) => {
-          console.log(err);
-        });
     }
   
     updateLike(LikeButtonActive, cardId) {
@@ -107,9 +89,6 @@ class Api {
             }
             return Promise.reject(`Error: ${res.status}`);
           })
-          .catch((err) => {
-            console.log(err);
-          });
       }
       else {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
@@ -122,9 +101,6 @@ class Api {
             }
             return Promise.reject(`Error: ${res.status}`);
           })
-          .catch((err) => {
-            console.log(err);
-          });
       }
     }
   }

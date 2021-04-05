@@ -8,6 +8,9 @@ function PopupWithForm(props) {
                     <h3 className="modal__header">{props.title}</h3>
                     <form className="form" name={`form__${props.name}`} action="#" noValidate>
                         {props.children}
+                        <button className="form__submit-button form__submit-button_inactive" type="submit" data-text="Save">
+                            {props.buttonText}
+                        </button>
                     </form>
                     <button className="modal__reset-button" type="reset" aria-label="Close button" onClick={props.onClose}></button>
                 </div>
