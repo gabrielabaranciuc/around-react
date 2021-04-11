@@ -3,26 +3,11 @@ import api from "../utils/Api.js";
 import Card from "./Card";
 import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main(props) {
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [userAvatar, setUserAvatar] = React.useState('');
-
+    const currentUser = React.useContext(CurrentUserContext);
     const [cards, setCards] = React.useState([]);
-
-    React.useEffect(() => {
-        api
-            .getUserInfo()
-            .then((res) => {
-                setUserName(res.name);
-                setUserDescription(res.about);
-                setUserAvatar(res.avatar);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
 
     React.useEffect(() => {
         api
@@ -41,14 +26,14 @@ function Main(props) {
             <section className="profile">
                 <div className="profile__container">
                     <div className="profile__image-container">
-                        <img className="profile__avatar" src={userAvatar} style={{ backgroundImage: `url(${userAvatar})` }} alt="profile avatar" />
+                        <img className="profile__avatar" src={currentUser && currentUser.avatar} style={{ backgroundImage: `url(${currentUser.avatar}})` }} alt="profile avatar" />
                         <button className="profile__button profile__button_edit-avatar profile__button_hoverable"
                             aria-label="edit-avatar" type="button" onClick={props.onEditAvatar}></button>
                     </div>
                     <div className="profile__info">
                         <div className="profile__text">
-                            <h1 className="profile__name">{userName}</h1>
-                            <p className="profile__title">{userDescription}</p>
+                            <h1 className="profile__name">{currentUser && currentUser.name}</h1>
+                            <p className="profile__title">{currentUser && currentUser.about}</p>
                         </div>
                         <button className="button profile__edit-button" aria-label="edit" type="button" onClick={props.onEditProfile}></button>
                     </div>

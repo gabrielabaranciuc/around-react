@@ -16,3 +16,21 @@
     cursor: pointer;
     opacity: 0.8; 
 }
+
+.card__delete-button_visible {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../../images/delete-button.svg");
+    padding: 0;
+    width: 18px;
+    height: 19px;
+    top: 19px;
+    right: 15px;
+    border-style: none;
+    transition: 0.3s linear;
+    display: block;
+}
+
+.card__delete-button_hidden {
+    display: none;
+  }
