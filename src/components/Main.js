@@ -9,6 +9,31 @@ function Main(props) {
     const currentUser = React.useContext(CurrentUserContext);
     const [cards, setCards] = React.useState([]);
 
+    function handleCardLike(card) {
+        const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    
+        api
+          .changeLikeCardStatus(card._id, isLiked)
+          .then((newCard) => {
+            const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+            setCards(newCards);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      function handleCardDelete(card) {
+        api
+          .deleteCard(card._id)
+          .then(() => {
+            setCards(cards.filter((c) => c._id !== card._id));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
     React.useEffect(() => {
         api
             .getInitialCards()
@@ -26,7 +51,7 @@ function Main(props) {
             <section className="profile">
                 <div className="profile__container">
                     <div className="profile__image-container">
-                        <img className="profile__avatar" src={currentUser && currentUser.avatar} style={{ backgroundImage: `url(${currentUser.avatar}})` }} alt="profile avatar" />
+                        <img className="profile__avatar" src={currentUser && currentUser.avatar} alt="profile avatar" />
                         <button className="profile__button profile__button_edit-avatar profile__button_hoverable"
                             aria-label="edit-avatar" type="button" onClick={props.onEditAvatar}></button>
                     </div>
@@ -85,7 +110,10 @@ function Main(props) {
                     {cards.map((card) => (
                         <Card key={card._id}
                             card={card}
-                            onCardClick={props.onCardClick} />
+                            onCardClick={props.onCardClick} 
+                            onCardLike={handleCardLike}
+                            onCardDelete={handleCardDelete}
+                            />
                     ))}
 
                 </ul>

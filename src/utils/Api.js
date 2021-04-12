@@ -77,31 +77,14 @@ class Api {
         )
     }
   
-    updateLike(LikeButtonActive, cardId) {
-      if (LikeButtonActive) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-          method: "DELETE",
-          headers: this._headers
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-          })
-      }
-      else {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-          method: "PUT",
-          headers: this._headers
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-          })
-      }
+    changeLikeCardStatus(cardId, isLiked) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        headers: this._headers,
+        method: isLiked ? "DELETE" : "PUT",
+      })
+        .then((res) =>
+          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+        )
     }
   }
 
