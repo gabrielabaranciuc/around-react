@@ -26,12 +26,12 @@ class Api {
         )
     }
   
-    changeAvatar(formData) {
+    updateProfilePicture(avatarLink) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         headers: this._headers,
         method: "PATCH",
         body: JSON.stringify(
-          { avatar: formData.imageLink }
+          { avatar: avatarLink }
         ),
       })
         .then((res) =>
@@ -39,13 +39,13 @@ class Api {
         )
     }
   
-    changeUserInfo(formData) {
+    updateProfile(name, about) {
       return fetch(`${this._baseUrl}/users/me`, {
         headers: this._headers,
         method: "PATCH",
         body: JSON.stringify({
-          name: formData.name,
-          about: formData.job,
+          name: name,
+          about: about,
         }),
       })
         .then((res) =>
@@ -53,13 +53,13 @@ class Api {
         )
     }
   
-    addCard(formData) {
+    addCard(name, link) {
       return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers,
         method: "POST",
         body: JSON.stringify({
-          name: formData.title,
-          link: formData.link,
+          name: name,
+          link: link,
         }),
       })
         .then((res) =>

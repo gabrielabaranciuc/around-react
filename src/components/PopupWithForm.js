@@ -1,18 +1,21 @@
 import React from 'react';
 
 function PopupWithForm(props) {
+    const isOpenClass = props.isOpen ? "modal_opened" : "";
+    const submitInactiveClass = props.isSubmitActive ? "" : "form__submit-button_inactive";
+
     return (
         <>
-            <section className={`modal modal_type_${props.name} ${props.isOpen ? "modal_opened" : ""}`}>
+            <section className={`modal modal_type_${props.name} ${isOpenClass}`}>
                 <div className={`modal__container modal__${props.name}`}>
                     <h3 className="modal__header">{props.title}</h3>
-                    <form className="form" name={`form__${props.name}`} action="#" noValidate>
+                    <form className="form" action="#" noValidate onSubmit={props.onSubmit}>
                         {props.children}
-                        <button className="form__submit-button form__submit-button_inactive" type="submit" data-text="Save">
-                            {props.buttonText}
+                        <button className={`form__submit-button ${submitInactiveClass}`} type="submit">
+                            {props.submitText}
                         </button>
                     </form>
-                    <button className="modal__reset-button" type="reset" aria-label="Close button" onClick={props.onClose}></button>
+                    <button className="modal__reset-button" type="reset" onClick={props.onClose}></button>
                 </div>
             </section>
         </>
