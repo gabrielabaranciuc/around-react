@@ -88,6 +88,7 @@ class Api {
     }
   }
 
+  
   const api = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/group-7",
     headers: {
