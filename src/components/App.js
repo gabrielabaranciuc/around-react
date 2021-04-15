@@ -2,14 +2,14 @@ import React from 'react';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import ImagePopup from "./ImagePopup";
-import DeleteConfirmationPopup from "./DeleteConfirmationPopup";
-import api from "../utils/Api";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { submitSave, submitSaving, submitCreate, submitCreating, submitDelete, submitDeleting } from "../utils/utils";
+import EditProfilePopup from "./EditProfilePopup.js";
+import EditAvatarPopup from "./EditAvatarPopup.js";
+import AddPlacePopup from "./AddPlacePopup.js";
+import ImagePopup from "./ImagePopup.js";
+import DeleteConfirmationPopup from "./DeleteConfirmationPopup.js";
+import api from "../utils/api.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
+import { submitSave, submitSaving, submitCreate, submitCreating, submitDelete, submitDeleting } from "../utils/utils.js";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);

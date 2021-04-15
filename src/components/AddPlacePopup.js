@@ -1,5 +1,5 @@
 import React from 'react';
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from "./PopupWithForm.js";
 
 function AddPlacePopup(props) {
     const [title, setTitle] = React.useState("");
