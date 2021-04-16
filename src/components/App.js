@@ -9,7 +9,7 @@ import ImagePopup from "./ImagePopup.js";
 import DeleteConfirmationPopup from "./DeleteConfirmationPopup.js";
 import api from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
-import { submitSave, submitSaving, submitCreate, submitCreating, submitDelete, submitDeleting } from "../utils/utils.js";
+import { submitSave, submitSaving, submitCreate, submitCreating, submitDelete, submitDeleting } from "../utils/constants.js";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -71,6 +71,7 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setIsConfirmationPopupOpen(false);
     setSelectedCard(null);
   }
 

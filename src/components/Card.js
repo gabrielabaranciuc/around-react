@@ -29,7 +29,7 @@ function Card(props) {
 
     return (
         <>
-            <li key={props.card._id} className="card">
+            <li className="card">
                 <button className={cardDeleteButtonClassName} aria-label="delete-card" type="button" onClick={handleCardDelete}></button>
                 <div className="card__image" style={{ backgroundImage: `url(${props.card.link})` }} onClick={handleCardClick}></div>
                 <div className="card__text">

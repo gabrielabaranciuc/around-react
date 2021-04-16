@@ -27,8 +27,8 @@ function Main(props) {
 
             <section className="cards">
                 <ul className="cards__list">
-                    {props.cards.map((card, index) => (
-                        <Card key={index}
+                    {props.cards.map((card) => (
+                        <Card key={card._id}
                             card={card}
                             onCardClick={props.onCardClick}
                             onCardLike={props.onCardLike}
