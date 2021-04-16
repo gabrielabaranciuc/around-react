@@ -127,7 +127,7 @@ function App() {
   function handleAddPlace({ title, link }) {
     setSubmitText(submitCreating);
     api.addCard(title, link).then((newCard) => {
-      setCards([...cards, newCard]);
+      setCards([newCard, ...cards]);
       setIsAddPlacePopupOpen(false);
     }).catch((err) => {
       console.log(err);
